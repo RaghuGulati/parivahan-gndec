@@ -80,8 +80,9 @@ DATABASES = {
         'NAME': 'parivahandb',
 	'HOST': 'localhost',
 	'PORT': '',
-	'USER': 'rgsinger',
-	'PASSWORD': 'Huihui@1',
+	'USER': 'parivahangndec',
+	'PASSWORD': 'parivahangndec',
+#put the username and password of your mysql database
     }
 }
 
