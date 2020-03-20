@@ -1,4 +1,3 @@
-#from django.shortcuts import render
 from django.shortcuts import render,render
 from database.models import Student
 from database.forms import StudentForm
@@ -25,7 +24,3 @@ def register(request):
 def show(request):
     stu = Student.objects.all()
     return render(request,"show.html",{'students':stu})
-# Create your views here.
-
-def home_view(request):
-	return render(request, "home.html")
