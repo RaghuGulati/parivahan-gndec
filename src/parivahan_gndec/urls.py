@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from database.views import *
+#from crudapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_view),
+    path('crud/register',register),
+    path('crud/show',show),
 ]
