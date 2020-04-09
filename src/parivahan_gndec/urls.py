@@ -20,4 +20,10 @@ from database.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_view),
+    path('student/',student_view),
+    path('caretaker/',caretaker_view),
+    path('advisor/',advisor_view),
+    path('hod/',hod_view),
+    path('pgblock/',pgblock_view),
+    path('prtc/',prtc_view),
 ]
