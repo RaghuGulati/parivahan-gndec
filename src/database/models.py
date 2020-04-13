@@ -1,54 +1,56 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class Student(models.Model):
-    sno = models.IntegerField()
-    urn = models.IntegerField()
+    urn = models.IntegerField(primary_key = True)
     crn = models.IntegerField()
     name = models.CharField(max_length=50)
-    mobile = models.IntegerField()
+    parents_name = models.CharField(max_length=50)
+    mobile = models.CharField(max_length=10)
     email = models.EmailField(max_length = 50)
-    aadhar_no = models.IntegerField()
+    aadhar_no = models.CharField(max_length = 12)
+    Address = models.CharField(max_length=50)
     branch = models.CharField(max_length=20) 
     year = models.IntegerField()
     section = models.CharField(max_length=5)
-    hosteler_or_dayscollar = models.CharField(max_length=50)
-    photo = models.FileField(upload_to='pics')
+    residence = models.CharField(max_length=50)
+    photo = models.FileField(upload_to='./student_photo/')
     class_calculated =  models.CharField(max_length=50)
 
-
 class CareTaker(models.Model):
-     sno = models.IntegerField()
-     unique_id = models.IntegerField()
+     unique_id = models.CharField(primary_key = True, max_length = 6)
      name = models.CharField(max_length=50)
-     mobile = models.IntegerField()
+     mobile = models.CharField(max_length = 10)
      email = models.EmailField(max_length = 50)
      hostel_no = models.IntegerField()
-     date_and_time = models.DateTimeField(auto_now=True)
 
 class Advisor(models.Model):
-    sno = models.IntegerField()
-    unique_id = models.IntegerField()
+    unique_id = models.CharField(primary_key = True, max_length = 6)
     name = models.CharField(max_length=50)
-    mobile = models.IntegerField()
+    mobile = models.CharField(max_length = 10)
     email = models.EmailField(max_length = 50)
-    calss_alloted = models.IntegerField()
-    date_and_time = models.DateTimeField(auto_now=True)
+    class_alloted = models.CharField(max_length = 50)
+
+class Departments(models.Model):
+	dept_id =  models.CharField(primary_key = True, max_length = 4)
+	dept_name = models.CharField(max_length = 25)
+	dept_hod = models.CharField(max_length = 25 )
+	contact = models.CharField(max_length = 15)
+	email = models.EmailField(max_length = 25)
 
 class ClerkOffice(models.Model):
-    sno = models.IntegerField()
-    unique_id = models.IntegerField()
-    hod_name = models.CharField(max_length=50)
+    clerk_id =  models.CharField(primary_key = True, max_length = 4)
     clerk_name = models.CharField(max_length=50)
-    mobile = models.IntegerField()
-    email = models.EmailField(max_length = 50)
-    branch = models.CharField(max_length = 20)
-    date_and_time = models.DateTimeField(auto_now=True)
+    department_id = models.CharField(max_length = 20)
 
 class PgBlock(models.Model):
-    sno = models.IntegerField()
-    employee_id = models.IntegerField()
+    employee_id = models.CharField(primary_key = True, max_length = 4)
     employee_name = models.CharField(max_length=50)
     head_name = models.CharField(max_length=50)
     head_id = models.IntegerField()
-    date_and_time = models.DateTimeField(auto_now=True)
+
+#class application_form(models.Model):
+	
+
+	

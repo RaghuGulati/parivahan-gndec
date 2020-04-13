@@ -1,0 +1,162 @@
+{% extends 'home.html' %}
+
+
+
+{% block main %}
+<style>
+	legend{
+		border: 4px solid black;
+		color: red;
+		padding: 2px;
+	}
+</style>
+
+<form action = '' method = 'POST' style = "font-size: 25px ">
+		<br>
+		<fieldset>
+		<br>
+			<legend><h1>PERSONAL INFORMATION</h1></legend>
+				<table>
+					<tr>
+						<td>
+							<label for = 'sname'>Student Name : </label>
+						</td>
+						<td>
+							<input type='text' id='sname' value = "{{ obj.name }}">
+						</td>
+					</tr>
+					<tr>
+						<td>
+                        				<label for = 'pname'>Father's/Mother's Name : </label>
+						</td>
+						<td>
+							<input type='text' id='pname' value = "{{obj.parents_name}}">
+						</td>
+					</tr>
+					<tr>
+						<td>
+                        				<label for = 'mob'>Mobile no : </label>
+                       				</td>
+						<td>
+							<input type='text' id='mob' value = "{{ obj.mobile  }}">
+                       				</td>
+					</tr>
+					<tr>
+						<td>
+                        				<label for = 'address'>ADDRESS : </label>
+						</td>
+						<td>
+							<textarea rows=5 cols=50 id='address'>{{ obj.Address }}</textarea>
+						</td>
+					</tr>
+				</table>
+		</fieldset>
+		<br>
+		<fieldset>
+			<legend><h1>COLLEGE DETAILS</h1></legend>
+			<table>
+				<tr>
+					<td>
+						<label for = 'course'>COURSE : </label>
+					</td>
+					<td>
+			                        <input type='text' id='course' value = "{{ obj.branch }}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+			                        <label for = 'urn'>URN : </label>
+					</td>
+					<td>
+			                        <input type='number' id='urn' value = "{{ obj.urn }}">
+					</td>
+				</tr>
+				<tr>
+					<td>
+			                        <label for = 'class'>CLASS :  </label>
+					</td>
+					<td>
+			                        <input type='text' id='class' value = "{{ obj.class_calculated}}" >
+					</td>
+				</tr>
+				<tr>
+					<td>
+			                        <label for = 'dergreeyear'>Degree Year: </label>
+					</td>
+					<td>
+			                        <input type='number' id='degreeyear'>
+					</td>
+				</tr>
+				<tr>
+					<td>
+			                        <label for = 'dname'>Department: </label>
+					</td>
+					<td>
+			                        <input type='text' id='dname'>
+					</td>
+				</tr>
+				<tr>
+					<td>
+			                        <label for = 'session'>Session :  </label>
+					</td>
+					<td>
+			                        <input type='text' id='session'>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Residence :</label>
+					</td>
+					<td>
+                			        <input type='text' id='residence' value = "{{ obj.residence  }}">
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+		<br>
+		<fieldset>
+			<legend><h1>PASS DETAILS</h1></legend>
+			<table>
+				<tr>
+					<td>
+						<label for = 'depo'>DEPO Name : </label>
+					</td>
+					<td>
+						<input type='text' id='depo'>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>LOCATION : </label>
+					</td>
+					<td>
+						<label for='from1'>FROM : </label><input type='text' name='from1' id='from1'>
+					</td>
+					<td>
+						<label for ='to1'>TO : </label><input type='text' name='to1' id='to1'>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>PERIOD : </label>
+					</td>
+					<td>
+			                        <label for='from2'>FROM : </label><input type='date' name='from2' id='from2'>
+					</td>
+					<td>
+						<label for ='to2'>TO : </label><input type='date' name='to2' id='to2'>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for = 'passno'>OLD PASS NUMBER: </label>
+					</td>
+					<td>
+			                        <input type='number' id='passno'>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+
+		</form>
+{% endblock %}
