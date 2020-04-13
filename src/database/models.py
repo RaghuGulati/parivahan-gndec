@@ -50,7 +50,18 @@ class PgBlock(models.Model):
     head_name = models.CharField(max_length=50)
     head_id = models.IntegerField()
 
-#class application_form(models.Model):
+class application_form(models.Model):
+    unique_id = models.CharField(primary_key = True, max_length = 12)
+    urn = models.ForeignKey('Student', on_delete = models.CASCADE)
+    depo_name = models.CharField(max_length = 25)
+    location_from = models.CharField(max_length = 25)
+    location_to = models.CharField(max_length = 25)
+    period_from = models.DateField()
+    period_to = models.DateField()
+    old_pass_no = models.CharField(max_length = 12)
+    level = models.CharField(max_length = 25)
+    status = models.CharField(max_length = 8, default = "Accepted")
+
 	
 
 	

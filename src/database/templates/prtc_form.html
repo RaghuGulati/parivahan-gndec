@@ -1,7 +1,5 @@
 {% extends 'home.html' %}
 
-
-
 {% block main %}
 <style>
 	legend{
@@ -9,12 +7,30 @@
 		color: red;
 		padding: 2px;
 	}
-</style>
 
-<form action = '' method = 'POST' style = "font-size: 25px ">
+	label{
+		padding: 2px;
+	}
+	td,th{
+		width:450px;
+	}
+
+	.note{
+		font-size: 25px;
+	}
+</style>
+<div class = "note">
+	<center>
+		<b>
+			<u>Note:</u>
+			The details are taken from college database. If any detail is incorrect, kindly contact your advisor.
+		</b>
+	</center>
+</div>
+
+<form action = '.' method = 'POST' enctype = "multipart/form-data" style = "font-size: 25px">{% csrf_token %}
 		<br>
 		<fieldset>
-		<br>
 			<legend><h1>PERSONAL INFORMATION</h1></legend>
 				<table>
 					<tr>
@@ -22,31 +38,32 @@
 							<label for = 'sname'>Student Name : </label>
 						</td>
 						<td>
-							<input type='text' id='sname' value = "{{ obj.name }}">
+							<label id='sname'> {{ obj.name }} </label>
 						</td>
 					</tr>
 					<tr>
 						<td>
-                        				<label for = 'pname'>Father's/Mother's Name : </label>
+                        	<label for = 'pname'>Father's/Mother's Name: 
+                        	</label>
 						</td>
 						<td>
-							<input type='text' id='pname' value = "{{obj.parents_name}}">
+							<label id='pname'> {{obj.parents_name}} </label>
 						</td>
 					</tr>
 					<tr>
 						<td>
-                        				<label for = 'mob'>Mobile no : </label>
-                       				</td>
+                        	<label for = 'mob'>Mobile no : </label>
+                       	</td>
 						<td>
-							<input type='text' id='mob' value = "{{ obj.mobile  }}">
-                       				</td>
+							<label id='mob'>{{ obj.mobile  }}</label>
+                       	</td>
 					</tr>
 					<tr>
 						<td>
-                        				<label for = 'address'>ADDRESS : </label>
+                        	<label for = 'address'>ADDRESS : </label>
 						</td>
 						<td>
-							<textarea rows=5 cols=50 id='address'>{{ obj.Address }}</textarea>
+							<label id='address'>{{ obj.Address }}</label>
 						</td>
 					</tr>
 				</table>
@@ -60,47 +77,47 @@
 						<label for = 'course'>COURSE : </label>
 					</td>
 					<td>
-			                        <input type='text' id='course' value = "{{ obj.branch }}">
+			            <label id='course'> Btech/Mtech </label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-			                        <label for = 'urn'>URN : </label>
+			            <label for = 'urn'>URN : </label>
 					</td>
 					<td>
-			                        <input type='number' id='urn' value = "{{ obj.urn }}">
-					</td>
-				</tr>
-				<tr>
-					<td>
-			                        <label for = 'class'>CLASS :  </label>
-					</td>
-					<td>
-			                        <input type='text' id='class' value = "{{ obj.class_calculated}}" >
+			            <label id='urn'>{{ obj.urn }}</label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-			                        <label for = 'dergreeyear'>Degree Year: </label>
+			           <label for = 'class'>CLASS :  </label>
 					</td>
 					<td>
-			                        <input type='number' id='degreeyear'>
-					</td>
-				</tr>
-				<tr>
-					<td>
-			                        <label for = 'dname'>Department: </label>
-					</td>
-					<td>
-			                        <input type='text' id='dname'>
+			           <label id='class'> {{ obj.class_calculated}}</label>
 					</td>
 				</tr>
 				<tr>
 					<td>
-			                        <label for = 'session'>Session :  </label>
+			           <label for = 'dergreeyear'>Degree Year: </label>
 					</td>
 					<td>
-			                        <input type='text' id='session'>
+					   <label id = "dergreeyear"> {{ obj.year }} </label>	
+					</td>
+				</tr>
+				<tr>
+					<td>
+			            <label for = 'dname'>Department: </label>
+					</td>
+					<td>
+			            <label id  = "dname"> {{ obj.branch }} </label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+			            <label for = 'session'>Session: </label>
+					</td>
+					<td>
+			            <input type='text' id='session' value = "2017-2021">
 					</td>
 				</tr>
 				<tr>
@@ -108,32 +125,41 @@
 						<label>Residence :</label>
 					</td>
 					<td>
-                			        <input type='text' id='residence' value = "{{ obj.residence  }}">
-					</td>
+                	    <label id='residence'> {{ obj.residence  }}</label>
+                	</td>
 				</tr>
 			</table>
 		</fieldset>
 		<br>
 		<fieldset>
 			<legend><h1>PASS DETAILS</h1></legend>
-			<table>
+			<table cellpadding ="6">
 				<tr>
 					<td>
 						<label for = 'depo'>DEPO Name : </label>
 					</td>
 					<td>
-						<input type='text' id='depo'>
+						<input type='text' name='depo'>
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td style="width: 50px">
 						<label>LOCATION : </label>
 					</td>
 					<td>
-						<label for='from1'>FROM : </label><input type='text' name='from1' id='from1'>
+						<label for='from1'>FROM : </label>
 					</td>
 					<td>
-						<label for ='to1'>TO : </label><input type='text' name='to1' id='to1'>
+						<input type='text' name='loc_from'>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<label for ='to1'>TO : </label>
+					</td>
+					<td>
+						<input type='text' name='loc_to'>
 					</td>
 				</tr>
 				<tr>
@@ -141,10 +167,12 @@
 						<label>PERIOD : </label>
 					</td>
 					<td>
-			                        <label for='from2'>FROM : </label><input type='date' name='from2' id='from2'>
+			            <label for='from2'>FROM : </label>
+			            <input type='date' name='period_from'>
 					</td>
 					<td>
-						<label for ='to2'>TO : </label><input type='date' name='to2' id='to2'>
+						<label for ='to2'>TO : </label>
+						<input type='date' name='period_to'>
 					</td>
 				</tr>
 				<tr>
@@ -152,11 +180,24 @@
 						<label for = 'passno'>OLD PASS NUMBER: </label>
 					</td>
 					<td>
-			                        <input type='number' id='passno'>
+                        <input type='number' name='oldpassno'>
+					</td>
+					<td>
+						<b>
+							leave it blank if you are applying for the first time				
+						</b>
 					</td>
 				</tr>
 			</table>
 		</fieldset>
-
+		<br>	
+		<center>
+		<button style="background-color:blue; color:white" type = "submit">
+                                Submit
+                        </button>
+                        <button style="background-color:blue; color:white" type = "reset">
+                                Reset
+                        </button>
+                    </center>
 		</form>
 {% endblock %}
