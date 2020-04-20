@@ -1,0 +1,124 @@
+{% extends './navbar.html' %}
+
+{% block main %}
+<style>
+	legend{
+		border: 4px solid black;
+		color: red;
+		padding: 2px;
+	}
+
+	label{
+		padding: 2px;
+	}
+	td,th{
+		width:450px;
+	}
+
+	.note{
+		font-size: 25px;
+	}
+</style>
+		<div class = "note">
+			<center>
+				<b>
+					<u>Note:</u>
+					The details are taken from college database. If any detail is incorrect, kindly contact your advisor.<br>
+				</b>
+			</center>
+		</div>
+		<br>
+		<fieldset style="font-size: 25px">
+			<legend><h1>PERSONAL INFORMATION</h1></legend>
+				<table>
+					<tr>
+						<td>
+							<label for = 'sname'>Student Name : </label>
+						</td>
+						<td>
+							<label id='sname'> {{ obj.name }} </label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+                        	<label for = 'pname'>Father's/Mother's Name: 
+                        	</label>
+						</td>
+						<td>
+							<label id='pname'> {{obj.parents_name}} </label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+                        	<label for = 'mob'>Mobile no : </label>
+                       	</td>
+						<td>
+							<label id='mob'>{{ obj.mobile  }}</label>
+                       	</td>
+					</tr>
+					<tr>
+						<td>
+                        	<label for = 'address'>ADDRESS : </label>
+						</td>
+						<td>
+							<label id='address'>{{ obj.Address }}</label>
+						</td>
+					</tr>
+				</table>
+		</fieldset>
+		<br>
+		<fieldset style="font-size: 25px">
+			<legend><h1>COLLEGE DETAILS</h1></legend>
+			<table>
+				<tr>
+					<td>
+						<label for = 'course'>COURSE : </label>
+					</td>
+					<td>
+			            <label id='course'> Btech </label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+			            <label for = 'urn'>URN : </label>
+					</td>
+					<td>
+			            <label id='urn'>{{ obj.urn }}</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+			           <label for = 'class'>CLASS :  </label>
+					</td>
+					<td>
+			           <label id='class'> {{ obj.class_calculated}}</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+			           <label for = 'dergreeyear'>Degree Year: </label>
+					</td>
+					<td>
+					   <label id = "dergreeyear"> {{ obj.year }} </label>	
+					</td>
+				</tr>
+				<tr>
+					<td>
+			            <label for = 'dname'>Department: </label>
+					</td>
+					<td>
+			            <label id  = "dname"> {{ obj.branch }} </label>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label>Residence :</label>
+					</td>
+					<td>
+                	    <label id='residence'> {{ obj.residence  }}</label>
+                	</td>
+				</tr>
+			</table>
+		</fieldset>
+{% endblock %}		

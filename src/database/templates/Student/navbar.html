@@ -1,0 +1,24 @@
+{% extends '../home.html' %}
+
+{% block title %}
+Student Portal: {{ obj.urn }}
+{% endblock %}
+
+{% block navbar %}
+<ul class="navbar-nav flex-column">
+	<li class="nav-item active">
+		<a href = "/portal/student/view_details/{{ obj.urn }}" class="nav-link">View Details</a>		
+	</li>
+
+	{% if obj.hostel_no == 0 %}
+		<li class="nav-item active">
+			<a href = "/portal/student/apply_bus_paas/{{ obj.urn }}/" class="nav-link">Apply for bus pass</a>		
+		</li>		
+	{% endif %}
+
+	<li class="nav-item active">
+		<a href = "#" class="nav-link">Contact Advisor</a>		
+	</li>	
+
+</ul>
+{% endblock %}

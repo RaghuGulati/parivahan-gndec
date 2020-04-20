@@ -1,6 +1,6 @@
 from django import forms
 from .models import *
-from phonenumber_field.modelfields import PhoneNumberField
+from django_select2 import forms as s2forms
 
 class new_student(forms.Form):
     urn = forms.CharField(
@@ -99,10 +99,11 @@ class new_student(forms.Form):
 	       ('MCA', 'Masters in Computer Applications'),
 	      )
 #    degree = forms.ChoiceField(choices=degree_choices)
-
     residence = (('Hosteler', 'Hosteler'),('Day Scholor','Day Scholor'))
 
     years = (('1','1st'),('2','2nd'),('3','3rd'),('4','4th'))
+    hostels = (('1','1'),('2','2'),('3','3'),('4','4'), ('5','5'))
+
     branch = forms.CharField(widget=forms.Select(
 			    	choices = choices,
 				attrs = {
@@ -126,7 +127,9 @@ class new_student(forms.Form):
 				}
 			    )
 )
-    residence = forms.ChoiceField(choices = residence,
+
+    residence = forms.ChoiceField(
+				choices = residence,
 		    	widget=forms.RadioSelect(
 				attrs ={
 					'id':'myid',
@@ -135,6 +138,28 @@ class new_student(forms.Form):
 				),							
 			label = 'Mode of residence'    
 		    )
+
+    gender_choices = [('Male','Male'),('Female','Female')]
+
+    gender = forms.ChoiceField(
+				choices = gender_choices,
+		    	widget=forms.RadioSelect(
+				attrs ={
+					'id':'myid',
+
+				} 
+				),							
+			label = 'Gender'    
+		    )
+
+    hostel_no = forms.CharField(widget=forms.Select(
+			    	choices = hostels,
+				attrs = {
+					 "class": "form-control",
+					 "style": "height:50px;"
+				}
+			    ))
+
     photo = forms.FileField()
     
     def __init__(self, *args, **kwargs):

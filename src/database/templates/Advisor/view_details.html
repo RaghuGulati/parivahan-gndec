@@ -1,0 +1,61 @@
+{% extends '../navbar.html' %}
+
+{% block main %}
+<style>
+	legend{
+		border: 4px solid black;
+		color: red;
+		padding: 2px;
+	}
+
+	label{
+		padding: 2px;
+	}
+	td,th{
+		width:450px;
+	}
+
+	.note{
+		font-size: 25px;
+	}
+</style>
+<br><br>
+		<fieldset style="font-size: 25px">
+			<legend><h1>PERSONAL INFORMATION</h1></legend>
+				<table>
+					<tr>
+						<td>
+							<label for = 'sname'>Advisor Unique Id : </label>
+						</td>
+						<td>
+							<label id='sname'> {{ obj.unique_id }} </label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for = 'sname'>Advisor Name : </label>
+						</td>
+						<td>
+							<label id='sname'> {{ obj.name }} </label>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+                        	<label for = 'mob'>Mobile no : </label>
+                       	</td>
+						<td>
+							<label id='mob'>{{ obj.mobile  }}</label>
+                       	</td>
+					</tr>
+					<tr>
+						<td>
+                        	<label for = 'email'>Email : </label>
+                       	</td>
+						<td>
+							<label id='email'>{{ obj.email }}</label>
+                       	</td>
+					</tr>
+				</table>
+		</fieldset>
+{% endblock %}		

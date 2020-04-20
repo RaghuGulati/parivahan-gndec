@@ -1,0 +1,43 @@
+{% extends '../navbar.html' %}
+
+{% block main %}
+<style type="text/css">
+	legend{
+		border: 4px solid black;
+		color: red;
+		padding: 2px;
+	}
+
+	td,th{
+		width:200px;
+	}
+
+	#name{
+		color: black;
+	}
+
+	#name:hover{
+		color: red;
+	}
+
+	#student{
+		font-size: 25px;
+	}
+</style>
+<br>
+	<fieldset>
+		<legend><h1>&nbsp List of Students:</h1></legend>
+		<table id = "student">
+			{% for student in std %}
+				<tr>
+					<th>{{ student.urn }}:</th>
+					<td>
+						<a href="/portal/advisor/{{ obj.unique_id }}/students/{{ student.urn }}/" id = "name">{{ student.name }}
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</fieldset>
+
+{% endblock %}

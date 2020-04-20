@@ -1,0 +1,47 @@
+{% extends '../navbar.html' %}
+
+{% block main %}
+<style type="text/css">
+	legend{
+		border: 4px solid black;
+		color: red;
+		padding: 2px;
+	}
+
+	td,th{
+		width:200px;
+	}
+
+	#name{
+		color: black;
+	}
+
+	#name:hover{
+		color: red;
+	}
+
+	#student{
+		font-size: 25px;
+	}
+</style>
+<br>
+	<fieldset>
+		<legend><h1>&nbsp Recommended Applications:</h1></legend>
+		<table id = "student">
+				<tr>
+					<th>Application ID</th>
+					<th>Student Roll No</th>
+				</tr>
+			{% for application in app %}
+				<tr>
+					<td>{{ application.unique_id }}:</th>
+					<td>
+						<a href="#" id = "name">{{ application.urn }}
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</fieldset>
+
+{% endblock %}

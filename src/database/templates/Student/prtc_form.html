@@ -1,0 +1,95 @@
+{% extends './navbar.html' %}
+
+{% block main %}
+<style>
+	legend{
+		border: 4px solid black;
+		color: red;
+		padding: 2px;
+	}
+
+	label{
+		padding: 2px;
+	}
+	td,th{
+		width:450px;
+	}
+
+	.note{
+		font-size: 25px;
+	}
+</style>
+
+
+<form action = '.' method = 'POST' enctype = "multipart/form-data" style = "font-size: 25px">{% csrf_token %}
+		<br>
+		<fieldset>
+			<legend><h1>PASS DETAILS</h1></legend>
+			<table cellpadding ="6">
+				<tr>
+					<td>
+						<label for = 'depo'>DEPO Name : </label>
+					</td>
+					<td>
+						<input type='text' name='depo'>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 50px">
+						<label>LOCATION : </label>
+					</td>
+					<td>
+						<label for='from1'>FROM : </label>
+					</td>
+					<td>
+						<input type='text' name='loc_from'>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<label for ='to1'>TO : </label>
+					</td>
+					<td>
+						<input type='text' name='loc_to'>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>PERIOD : </label>
+					</td>
+					<td>
+			            <label for='from2'>FROM : </label>
+			            <input type='date' name='period_from'>
+					</td>
+					<td>
+						<label for ='to2'>TO : </label>
+						<input type='date' name='period_to'>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for = 'passno'>OLD PASS NUMBER: </label>
+					</td>
+					<td>
+                        <input type='number' name='oldpassno'>
+					</td>
+					<td>
+						<b>
+							leave it blank if you are applying for the first time				
+						</b>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+		<br>	
+		<center>
+		<button style="background-color:blue; color:white" type = "submit">
+                                Submit
+                        </button>
+                        <button style="background-color:blue; color:white" type = "reset">
+                                Reset
+                        </button>
+                    </center>
+		</form>
+{% endblock %}
