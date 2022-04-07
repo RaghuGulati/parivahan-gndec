@@ -7,9 +7,21 @@
 		color: red;
 		padding: 2px;
 	}
+	th{
+		background-color: purple;
+		color: white;
+		border: 2px solid white;
+		text-align: center;
+	}
 
 	td,th{
-		width:200px;
+		text-align: center;
+		width:215px;
+		padding: 4px;
+	}
+	
+	#sm{
+		width: 112px;
 	}
 
 	#name{
@@ -23,22 +35,127 @@
 	#student{
 		font-size: 25px;
 	}
+	
+	#accept{
+		color: blue;
+	}
+
+	#reject{
+		color: red;
+	}
+
+	#main{
+		background-color: #EEEEFF;
+		border: 2px solid white;
+	}
+
 </style>
 <br>
 	<fieldset>
-		<legend><h1>&nbsp Recommended Applications:</h1></legend>
+		<legend><h1>&nbsp {{ heading }} Applications:</h1></legend>
 		<table id = "student">
 				<tr>
 					<th>Application ID</th>
 					<th>Student Roll No</th>
+					<th colspan = "2">
+						<center>Location</center>
+					</th>
+					<th colspan = "2">
+						<center>
+							Period
+						</center>
+					</th>
+					{% if type != "rec" %}
+						<th>
+							Current Date
+						</th>
+					{% endif %}
+				</tr>
+				<tr>
+					<th></th>
+					<th></th>
+					<th>
+						<center>
+							From
+						</center>
+					</th>
+					<th>
+						<center>
+							To
+						</center>
+					</th>
+					<th>
+						<center>
+							From
+						</center>
+					</th>
+					<th>
+						<center>
+							To
+						</center>
+					</th>
+					{% if type != "rec" %}
+						<th>
+							Time Stamp
+						</th>	
+					{% endif %}
+					
 				</tr>
 			{% for application in app %}
 				<tr>
-					<td>{{ application.unique_id }}:</th>
-					<td>
-						<a href="#" id = "name">{{ application.urn }}
-						</a>
-					</td>
+					<td id = "main">{{ application.unique_id }}</td>
+					<td id = "main">{{ application.urn_id }}</td>
+					<td id = "main">{{ application.location_from }}</td>
+					<td id = "main">{{ application.location_to }}</td>
+					<td id = "main">{{ application.period_from }}</td>
+					<td id = "main">{{ application.period_to }}</td>
+					{% if type == "rec" %}
+						{% if objtype == "ADV" %}
+						<td id = "sm">
+							<a href="/portal/advisor/{{ obj.unique_id }}/applications/recommended/{{ application.unique_id }}/accept/">
+								<i id = "accept" class="fa fa-check fa-2x"></i> 
+							</a>
+						</td>
+						<td id = "sm">
+							<a href = "/portal/advisor/{{ obj.unique_id }}/applications/recommended/{{ application.unique_id }}/reject/">
+								<i id = "reject" class="fa fa-close fa-2x"></i> 
+							</a>
+						</td>	
+
+						{% elif objtype == "CLR" %}
+						<td id = "sm">
+							<a href="/portal/department/{{ obj.dept_id }}/applications/recommended/{{ application.unique_id }}/accept/">
+								<i id = "accept" class="fa fa-check fa-2x"></i> 
+							</a>
+						</td>
+						<td id = "sm">
+							<a href = "/portal/department/{{ obj.dept_id }}/applications/recommended/{{ application.unique_id }}/reject/">
+								<i id = "reject" class="fa fa-close fa-2x"></i> 
+							</a>
+						</td>
+						{% elif objtype == "PGE" %}
+						<td id = "sm">
+							<a href="/portal/academics/department/{{ obj.employee_id }}/applications/recommended/{{ application.unique_id }}/accept/">
+								<i id = "accept" class="fa fa-check fa-2x"></i> 
+							</a>
+						</td>
+						<td id = "sm">
+							<a href = "#">
+								<i id = "reject" class="fa fa-close fa-2x"></i> 
+							</a>
+						</td>
+
+						{% elif objtype == "REG" %}
+						<td id = "sm">
+							<a href="/portal/registrar/{{obj.unique_id}}/applications/recommended/{{ application.unique_id }}/generate/pdf/">
+								<i id = "reject" class="fa fa-file-pdf-o fa-2x"></i> 
+							</a>
+						</td>
+
+						{% endif %}
+					{% else %}
+						<td id = "main">{{ application.datetime_stamp}}</td>
+					{% endif %}
 				</tr>
 			{% endfor %}
 		</table>

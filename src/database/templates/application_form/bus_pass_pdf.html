@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Application: {{ application.unique_id }}</title>
+	<style type="text/css">
+
+	label, body{
+		font-size: 15px;
+		margin-bottom: 20px;
+	}
+	#credentials{
+		color: blue;
+	}
+
+	#heading{
+		font-weight: bold;
+	}
+	#stdpic{
+		width: 250px;
+	}
+	#stdh{
+		font-weight: bold;
+		width: 30%;		
+	}
+	#generatepdf{
+		text-decoration: none;
+		color: black;
+	}
+	div{
+		margin-bottom: 20px;
+	}
+	th,td{
+		border: 1px solid black;
+		padding: 4px;
+	}
+</style>
+</head>
+<body>
+	<div class="row header">
+	<div class="col-sm-6" align="center">
+		<label id = 'heading'>Application Number:</label> 
+		<label>	{{ application.unique_id }} </label>	
+	</div>
+</div>
+
+<div class="row student">
+The,<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    General Manager,<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+    P.R.T.C,<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    
+    <label>Ludhiana</label>
+<br><br>
+    <b>Subject: </b>Student bus pass application letter
+<br><br>
+    Respected Sir, 
+    <div style="text-align: justify; margin-left: 25px;">
+    	With due respect, I wish to state that I am a regular 
+        student of <label id = "credentials">Guru Nanak Dev Engineering College, Ludhiana</label> 
+        and the distance between the institution and my residence 
+        is less than 60 km. My details are:
+    </div>
+        <table>
+        	<tr>
+        		<th>Name</th>
+        		<th>Roll No</th>
+        		<th>Course</th>
+        		<th>Class</th>
+        		<th>Department</th>
+        		<th>Session</th>
+        	</tr>
+
+        	<tr>
+        		<td id = "credentials">{{ application.urn.name }}</td>
+        		<td id = "credentials">{{ application.urn_id }}</td>
+        		<td id = "credentials">BTech</td>
+        		<td id = "credentials">{{ application.urn.class_calculated }}</td>
+        		<td id = "credentials">{{ application.urn.branch }}</td>
+        		<td id = "credentials">2017-2021</td>
+        	</tr>
+        </table>
+
+    <div style="text-align: justify; margin-left: 25px;">
+    	<b>Father's Name:</b> 
+    	<label id = "credentials">
+    		{{ application.urn.parents_name }}<br>
+    	</label>
+    	<b>Address:</b> 
+    	<label id = "credentials">
+    		{{ application.urn.Address }}<br>
+    	</label>
+    	The bus depo: <label id = "credentials">
+    		{{ application.depo_name }}    		
+    	</label>
+    	is near to my residence. I thereby state that:
+    	<br>
+    	1. I don't live in the hostel.<br>
+    	2. I don't work in any government/non-government organization.<br>
+    	So, kindly issue me a bus pass valid from 
+		<label id = "credentials">	
+			{{ application.period_from }} 
+		</label> to 
+    	<label id = "credentials">	
+    		{{ application.period_to }} 
+    	</label> to travel from 
+    	<label id = "credentials">	
+    		{{ application.location_from }} 
+    	</label> to
+    	<label id = "credentials">	
+    		{{ application.location_to }} 
+    	</label><br>
+
+    	3. My previous bus pass number is: 
+    	<label id = "credentials">	
+    		{{ application.old_pass_no }} 
+    	</label>
+    	
+    	<br><br>
+    	Based on above description, kindly issue me bus pass. I am bound to give the fees 10 times if any of the above information is incorrect. I take the responsibility to follow all the conditions applied by PRTC and I will be bound to renew the bus pass on time. If will inform PRTC if I fail to do so.
+
+    	Yours Truly,
+    	Date: 
+    	<br><br>
+    	The above information given by the college/institution authority is correct.
+    	Quarterly concessional bus passes issued to the students pursuing Post Graduate/Graduate/ Under Graduate courses in various colleges including 
+    	institutes, Technical Education intitutes, ITI's etc.
+    	<br><br>
+    	Sign and college stamp:
+    	<br><br><br><br>
+    	Designation:
+    	<br><br>
+    	Date:
+
+
+</div>
+</body>
+</html>
+
+
+

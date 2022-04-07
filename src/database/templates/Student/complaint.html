@@ -1,0 +1,53 @@
+{% extends './navbar.html' %}
+
+{% block main %}
+  <head>
+    <script src='https://cdn.tiny.cloud/1/zrtsodlc0shnca0huggxvm08vp6181aabxpbbpnv9ttj43ik/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+    <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+    </script>
+    <style type="text/css">
+        
+        legend{
+          border: 4px solid black;
+          color: red;
+          padding: 2px;
+        }
+
+        label{
+          padding: 2px;
+        }
+
+        form{
+          font-size: 25px;
+          height: 150px;
+        }
+
+    </style>
+
+  </head>
+  <body>
+    <br>
+    <center>
+      <legend>
+       <h1>Write your complaint/message</h1>
+      </legend>
+    </center>
+    <br>
+    <form action = '.' method = 'POST' enctype = "multipart/form-data" style = "font-size: 25px">{% csrf_token %}
+      <textarea id="mytextarea" name="complaint" placeholder="Write your message/complaint.......(max 250 characters)" rows = "15">
+      </textarea>
+      <br>
+      <center>
+        <button style="background-color:blue; color:white" type = "submit">
+          Submit
+        </button>
+        <button style="background-color:blue; color:white" type = "reset">
+          Reset
+        </button>
+      </center>
+    </form>
+  </body>
+{% endblock %}

@@ -8,6 +8,21 @@ class new_student(forms.Form):
 	            attrs={"class": "form-control",  "placeholder": "Enter University Roll Number"}),
 	            required=True, label="URN",
 		    )
+
+    password = forms.CharField(
+		    widget=forms.PasswordInput(
+	            attrs={"class": "form-control",  "placeholder": "Enter University Roll Number"}),
+	            required=True,
+	            max_length=8,
+		    )
+
+    conf_password = forms.CharField(
+		    widget=forms.PasswordInput(
+	            attrs={"class": "form-control",  "placeholder": "Enter University Roll Number"}),
+	            required=True,
+	            max_length=8,
+		    )
+
     crn = forms.CharField(widget=forms.NumberInput(
 	            attrs={ "class": "form-control", "placeholder": "Enter Class Roll Number"}
         	    ),
@@ -95,8 +110,8 @@ class new_student(forms.Form):
 	       ('CS', 'Computer Science and Engineering'),
 	       ('IT', 'Information Technology'),
 	       ('PE', 'Production Engineering'),
-	       ('MBA', 'Masters in Business Administration'),
-	       ('MCA', 'Masters in Computer Applications'),
+	       ('MB', 'Masters in Business Administration'),
+	       ('MC', 'Masters in Computer Applications'),
 	      )
 #    degree = forms.ChoiceField(choices=degree_choices)
     residence = (('Hosteler', 'Hosteler'),('Day Scholor','Day Scholor'))
@@ -248,6 +263,27 @@ class new_advisor(forms.Form):
 		    max_length = 50
 		    )
 
+    choices = (('CE', 'Civil Engineering'),
+	       ('EE', 'Electrical Engineering'),
+	       ('ME', 'Mechanical Engineering'),
+	       ('EC', 'Electronics and Communication Engineering'),
+	       ('CS', 'Computer Science and Engineering'),
+	       ('IT', 'Information Technology'),
+	       ('PE', 'Production Engineering'),
+	       ('MB', 'Masters in Business Administration'),
+	       ('MC', 'Masters in Computer Applications'),
+	      )
+#    degree = forms.ChoiceField(choices=degree_choices)
+    department = forms.CharField(widget=forms.Select(
+			    	choices = choices,
+				 attrs = {
+					 "class": "form-control",
+					 "style": "height:50px;"
+
+				}
+			    )
+		    )
+
     b = Student.objects.values_list('class_calculated', flat = True).distinct()
     choices = [(id,id) for id in b]
 
@@ -260,10 +296,42 @@ class new_advisor(forms.Form):
 				}
 			    )
 		    )
+
    
     def __init__(self, *args, **kwargs):
         super(new_advisor, self).__init__(*args, **kwargs)
 
         for field in self.fields.values():
+            print(field.label)
             field.error_messages = {'required':'*'.format(fieldname=field.label)}    
 	    
+class loginform(forms.Form):
+    uid = forms.CharField(
+		    widget=forms.TextInput(
+	            attrs={"class": "form-control",  "placeholder": "Enter Username"}),
+	            required=True, label="Username",
+		    )
+
+    password = forms.CharField(
+		    widget=forms.PasswordInput(
+	            attrs={"class": "form-control",  "placeholder": "Enter Password"}),
+	            required=True,
+	            max_length=10,
+		    )
+
+    choices = (('student', 'Student'),
+	       ('advisor', 'Advisor'),
+	       ('department', 'Department'),
+	       ('academics/department', 'Academics Block'),
+	       ('registrar', 'Registrar'),
+	      )
+#    degree = forms.ChoiceField(choices=degree_choices)
+    login_as = forms.CharField(widget=forms.Select(
+			    	choices = choices,
+				 	attrs = {
+					 "class": "form-control",
+					 "style": "height:50px;"
+
+				}
+			    )
+		    )

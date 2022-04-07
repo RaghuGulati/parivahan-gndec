@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_filters',
     'django_select2',
+    'notifications',
+    'django_tables2',
+    'tinymce',
 ]
 
 MIDDLEWARE = [

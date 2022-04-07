@@ -1,0 +1,72 @@
+{% extends '../navbar.html' %}
+
+{% block main %}
+<style>
+	legend{
+		border: 4px solid black;
+		color: red;
+		padding: 2px;
+	}
+
+	label{
+		padding: 2px;
+	}
+	td,th{
+		width:450px;
+	}
+
+	.note{
+		font-size: 25px;
+	}
+</style>
+		<br>
+		<fieldset style="font-size: 25px">
+			<legend><h1>&nbsp  Advisor Details</h1></legend>
+				<table>
+					<tr>
+						<td>
+							<label for = 'sname'>Unique Id : </label>
+						</td>
+						<td>
+							<label id='sname'> {{ advisor.unique_id }} </label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for = 'sname'>Name : </label>
+						</td>
+						<td>
+							<label id='sname'> {{ advisor.name }} </label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for = 'sname'>Mobile : </label>
+						</td>
+						<td>
+							<label id='sname'> {{ advisor.mobile }} </label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for = 'sname'>Email : </label>
+						</td>
+						<td>
+							<label id='sname'> {{ advisor.email` }} </label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for = 'sname'>Group Alloted : </label>
+						</td>
+						<td>
+							<label id='sname'> {{ advisor.class_alloted }} </label>
+						</td>
+					</tr>
+
+
+				</table>
+		</fieldset>
+		<br>
+		
+{% endblock %}		

@@ -1,0 +1,69 @@
+{% extends '../navbar.html' %}
+
+{% block main %}
+<style>
+	legend{
+		border: 4px solid black;
+		color: red;
+		padding: 2px;
+	}
+
+	label{
+		padding: 2px;
+	}
+	td,th{
+		width:450px;
+	}
+
+	.note{
+		font-size: 25px;
+	}
+</style>
+<br><br>
+		<fieldset style="font-size: 25px">
+			<legend><h1>&nbsp DEPARTMENT: {{ obj.dept_name }} </h1></legend>
+				<table>
+					<tr>
+						<td>
+							<label for = 'sname'>HOD: </label>
+						</td>
+						<td>
+							<label id='sname'> {{ obj.dept_hod }} </label>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+                        	<label for = 'mob'>Contact: </label>
+                       	</td>
+						<td>
+							<label id='mob'>{{ obj.contact }}</label>
+                       	</td>
+					</tr>
+					<tr>
+						<td>
+                        	<label for = 'email'>Email : </label>
+                       	</td>
+						<td>
+							<label id='email'>{{ obj.email }}</label>
+                       	</td>
+					</tr>
+					<tr>
+						<td>
+                        	<label for = 'email'>Clerk ID : </label>
+                       	</td>
+						<td>
+							<label id='email'>{{ clerk.clerk_id }}</label>
+                       	</td>
+					</tr>
+					<tr>
+						<td>
+                        	<label for = 'email'>Clerk Name: </label>
+                       	</td>
+						<td>
+							<label id='email'>{{ clerk.clerk_name }}</label>
+                       	</td>
+					</tr>
+				</table>
+		</fieldset>
+{% endblock %}		

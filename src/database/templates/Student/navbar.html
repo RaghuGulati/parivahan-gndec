@@ -4,21 +4,41 @@
 Student Portal: {{ obj.urn }}
 {% endblock %}
 
+{% block uid %}
+	{{ obj.urn }}
+{% endblock %}
+
 {% block navbar %}
 <ul class="navbar-nav flex-column">
 	<li class="nav-item active">
-		<a href = "/portal/student/view_details/{{ obj.urn }}" class="nav-link">View Details</a>		
+		<a href = "/portal/student/{{ obj.urn }}/view_details/" class="nav-link">View Details</a>		
 	</li>
 
 	{% if obj.hostel_no == 0 %}
 		<li class="nav-item active">
-			<a href = "/portal/student/apply_bus_paas/{{ obj.urn }}/" class="nav-link">Apply for bus pass</a>		
+			<a href = "/portal/student/{{ obj.urn }}/apply_bus_pass/" class="nav-link">Apply for bus pass</a>		
 		</li>		
+		<li class="nav-item active">
+			<a href = "/portal/student/{{ obj.urn }}/notification/" class="nav-link">
+				Notification <i class = "fa fa-bell"></i>
+				{% if nons != 0 %}
+					<sup> {{ nons }} </sup>
+				{% endif %}
+			</a>		
+		</li>	
 	{% endif %}
 
 	<li class="nav-item active">
-		<a href = "#" class="nav-link">Contact Advisor</a>		
+		<a href = "/portal/student/{{ obj.urn }}/complaint_advisor/" class="nav-link">Contact Advisor</a>		
 	</li>	
 
 </ul>
+{% endblock %}
+
+{% block main %}
+	<h1 style="font-size: 150px; margin-top: 300px;">
+		<center>
+			Welcome
+		</center>
+	</h1>
 {% endblock %}

@@ -1,0 +1,36 @@
+{% extends './front.html' %}
+
+{% block main %}
+<center>
+	<style>
+
+	.form-control{
+		border: 2px solid black;
+		font-size: 25px;
+	}
+
+	
+</style>
+
+	<form method='POST' action='.' enctype="multipart/form-data">{% csrf_token %}
+                        <h2>
+                        <br>
+			<b>
+                           {{ form.as_p }}                      
+			   </b>
+                        <br>
+			<center>
+                        <button style="background-color:blue; color:white" type = "submit">
+                                Submit
+                        </button>
+                        <button style="background-color:blue; color:white" type = "reset">
+                                Reset
+                        </button>
+			</center>
+                
+                        </h2>
+        </form>
+
+</center>
+{% endblock %}
+
